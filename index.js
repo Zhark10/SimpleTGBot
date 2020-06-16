@@ -1,29 +1,16 @@
-const TelegramBot = require('node-telegram-bot-api')
+// const randomImage = 'https://source.unsplash.com/random';
 
-// const TOKEN = '1203488910:AAFzoa784z8aAtHg17mn7iA4nfVum9AiMAk'
+// bot.sendPhoto(chat_id, randomImage, caption = NULL, disable_notification = FALSE,
+// 	reply_to_message_id = NULL, reply_markup = NULL, parse_mode = NULL)
 
-// const bot = new TelegramBot(TOKEN, {polling: true})
+const TelegramBot = require('node-telegram-bot-api');
+process.env.NTBA_FIX_319 = 1;
 
-// bot.on('message', msg => {
-//     bot.sendMessage(msg.chat.id, `Hello, ${msg.from.first_name}!`)
-// })
+const TOKEN = '1110320719:AAHJ745kgGNuP_S1gZ4-ba7ZsAFIEnGd36M';
 
+const bot = new TelegramBot(TOKEN, {polling: true});
 
-var unirest = require("unirest");
-
-var req = unirest("POST", "https://financialtimesmikilior1v1.p.rapidapi.com/getAspectsList");
-
-req.headers({
-	"x-rapidapi-host": "FinancialTimesmikilior1V1.p.rapidapi.com",
-	"x-rapidapi-key": "29e0404db1msh66a945e13f17ff9p10aadfjsn27f47733b676",
-	"content-type": "application/x-www-form-urlencoded",
-	"useQueryString": true
-});
-
-req.form({});
-
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
-
-	console.log(res.body);
+bot.on('message', (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, 'Random message');
 });
